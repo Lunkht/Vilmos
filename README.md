@@ -21,4 +21,3 @@ Pour visualiser le projet localement, ouvrez simplement le fichier `index.html` 
 
 ---
 &copy; 2026 VILMOS Solutions Globales. Tous droits réservés.
-"# Vilmos" 
