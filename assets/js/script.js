@@ -260,3 +260,14 @@ window.handleContactSubmit = async function(event) {
         button.innerHTML = originalBtnText;
     }
 }
+
+// Scroll reveal animation
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section-reveal').forEach(el => revealObserver.observe(el));
