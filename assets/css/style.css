@@ -1,8 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Custom Animations */
+@theme {
+  --color-brandDark: #030712;
+  --color-brandNavy: #0d1117;
+  --color-brandBlue: #161b22;
+  --color-brandCyan: #00f2fe;
+  --color-brandOrange: #ff823a;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -19,7 +26,6 @@
     animation: pulse-glow 3s infinite;
 }
 
-/* Custom scrollbar styling */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -34,7 +40,6 @@
     background: #00f2fe;
 }
 
-/* Scroll reveal animations */
 .section-reveal {
     opacity: 0;
     transform: translateY(30px);
