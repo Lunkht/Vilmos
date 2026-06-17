@@ -10,8 +10,6 @@ const EMAILJS_CONFIG = {
     templateID: 'template_8zvkq8c'
 };
 
-emailjs.init(EMAILJS_CONFIG.publicKey);
-
 // Force dark mode
 document.documentElement.classList.add('dark');
 localStorage.theme = 'dark';
@@ -229,23 +227,29 @@ window.handleContactSubmit = async function(event) {
     };
 
     try {
-        const response = await emailjs.send(
-            EMAILJS_CONFIG.serviceID,
-            EMAILJS_CONFIG.templateID,
-            templateParams
-        );
+        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                service_id: EMAILJS_CONFIG.serviceID,
+                template_id: EMAILJS_CONFIG.templateID,
+                user_id: EMAILJS_CONFIG.publicKey,
+                template_params: templateParams
+            })
+        });
 
-        if (response.status === 200) {
+        if (response.ok) {
             successEl.classList.remove('hidden');
             form.reset();
             setTimeout(() => {
                 successEl.classList.add('hidden');
             }, 5000);
         } else {
-            alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+            const text = await response.text();
+            alert("Erreur " + response.status + " : " + text);
         }
     } catch (error) {
-        alert("Erreur de connexion. Vérifiez votre accès internet.");
+        alert("Erreur réseau : " + error.message);
     } finally {
         button.disabled = false;
         button.innerHTML = originalBtnText;
