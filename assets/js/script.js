@@ -1,3 +1,17 @@
+// --- EmailJS config ---
+// 1. Crée un compte gratuit sur https://www.emailjs.com/
+// 2. Ajoute un service email (Gmail, Outlook, etc.) → récupère le Service ID
+// 3. Crée un template avec les variables: name, email, phone, message, estimate
+// 4. Va dans Account > API Keys → récupère ta Public Key
+// 5. Remplace les valeurs ci-dessous:
+const EMAILJS_CONFIG = {
+    publicKey: 'YOUR_PUBLIC_KEY',
+    serviceID: 'YOUR_SERVICE_ID',
+    templateID: 'YOUR_TEMPLATE_ID'
+};
+
+emailjs.init(EMAILJS_CONFIG.publicKey);
+
 // Force dark mode
 document.documentElement.classList.add('dark');
 localStorage.theme = 'dark';
@@ -156,7 +170,7 @@ if (cameraQtyInput) cameraQtyInput.addEventListener('input', recalculateEstimato
 window.sendCalculatedQuote = function() {
     // Pre-fill the contact form inputs below
     const totalGNF = approxGnf ? approxGnf.innerText : '0 GNF';
-    const textToInsert = `Bonjour, je souhaite obtenir un devis final pour une infrastructure estimée à ${totalGNF}. Merci de me recontacter pour planifier l'étude technique.`;
+    const textToInsert = `Bonjour, je souhaite obtenir un devis final. Mon estimation préliminaire : ${totalGNF}. Merci de me recontacter.`;
     
     const messageEl = document.getElementById('message');
     if (messageEl) messageEl.value = textToInsert;
@@ -199,26 +213,29 @@ if (portFilterBtns.length > 0) {
 window.handleContactSubmit = async function(event) {
     event.preventDefault();
     const form = event.target;
-    const data = new FormData(form);
     const button = form.querySelector('button[type="submit"]');
     const successEl = document.getElementById('formSuccess');
 
-    // UI Loading state
     const originalBtnText = button.innerHTML;
     button.disabled = true;
     button.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Envoi en cours...';
 
-    try {
-        // Use Formspree (replace with your ID later or use this for demo)
-        const response = await fetch('https://formspree.io/f/mqkrpvyy', {
-            method: 'POST',
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+    const templateParams = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value,
+        estimate: document.getElementById('approx_gnf')?.innerText || 'Non spécifié'
+    };
 
-        if (response.ok) {
+    try {
+        const response = await emailjs.send(
+            EMAILJS_CONFIG.serviceID,
+            EMAILJS_CONFIG.templateID,
+            templateParams
+        );
+
+        if (response.status === 200) {
             successEl.classList.remove('hidden');
             form.reset();
             setTimeout(() => {
