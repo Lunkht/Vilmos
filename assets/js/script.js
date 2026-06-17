@@ -5,9 +5,9 @@
 // 4. Va dans Account > API Keys → récupère ta Public Key
 // 5. Remplace les valeurs ci-dessous:
 const EMAILJS_CONFIG = {
-    publicKey: 'YOUR_PUBLIC_KEY',
-    serviceID: 'YOUR_SERVICE_ID',
-    templateID: 'YOUR_TEMPLATE_ID'
+    publicKey: '5q7yOx8fNiGNmsj8q',
+    serviceID: 'service_ylfw2uh',
+    templateID: 'template_8zvkq8c'
 };
 
 emailjs.init(EMAILJS_CONFIG.publicKey);
