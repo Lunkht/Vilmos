@@ -1,29 +1,6 @@
-// Theme light/dark state toggle
-const themeToggleBtn = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-
-// Auto check darkmode preference
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-    if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-lg text-amber-500 animate-spin-slow';
-} else {
-    document.documentElement.classList.remove('dark');
-    if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-lg text-slate-700';
-}
-
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.theme = 'light';
-            if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-lg text-slate-700';
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.theme = 'dark';
-            if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-lg text-amber-500';
-        }
-    });
-}
+// Force dark mode
+document.documentElement.classList.add('dark');
+localStorage.theme = 'dark';
 
 // Mobile drawer toggling
 const menuBtn = document.getElementById('menuBtn');
@@ -46,12 +23,11 @@ const techCards = document.querySelectorAll('#techGrid .tech-card');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // reset actives
         filterBtns.forEach(b => b.classList.remove('bg-brandCyan', 'text-brandDark', 'active'));
-        filterBtns.forEach(b => b.classList.add('bg-slate-100', 'dark:bg-brandBlue', 'text-slate-700', 'dark:text-slate-300'));
+        filterBtns.forEach(b => b.classList.add('bg-brandBlue', 'text-slate-300'));
         
         btn.classList.add('bg-brandCyan', 'text-brandDark', 'active');
-        btn.classList.remove('bg-slate-100', 'dark:bg-brandBlue', 'text-slate-700', 'dark:text-slate-300');
+        btn.classList.remove('bg-brandBlue', 'text-slate-300');
 
         const filterVal = btn.getAttribute('data-filter');
 
@@ -196,14 +172,13 @@ const portfolioItems = document.querySelectorAll('#portfolioGrid .portfolio-item
 if (portFilterBtns.length > 0) {
     portFilterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Reset active button state
             portFilterBtns.forEach(b => {
                 b.classList.remove('bg-brandCyan', 'text-brandDark', 'active');
-                b.classList.add('bg-white', 'dark:bg-brandBlue', 'text-slate-600', 'dark:text-slate-300');
+                b.classList.add('bg-brandBlue', 'text-slate-300');
             });
             
             btn.classList.add('bg-brandCyan', 'text-brandDark', 'active');
-            btn.classList.remove('bg-white', 'dark:bg-brandBlue', 'text-slate-600', 'dark:text-slate-300');
+            btn.classList.remove('bg-brandBlue', 'text-slate-300');
 
             const filter = btn.getAttribute('data-filter');
 
