@@ -145,7 +145,7 @@
                 <button data-filter="app" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-brandBlue border border-slate-800 text-slate-300 hover:text-brandCyan transition-all">Apps Mobiles</button>
                 <button data-filter="windows" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-brandBlue border border-slate-800 text-slate-300 hover:text-brandCyan transition-all">Windows</button>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="techGrid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="techGrid">
                 <div class="tech-card bg-brandBlue/50 border border-brandBlue/60 p-8 rounded-2xl flex flex-col justify-between hover:border-brandCyan/40 transition-all duration-300" data-category="web">
                     <div>
                         <div class="w-14 h-14 rounded-xl bg-brandCyan/10 text-brandCyan flex items-center justify-center text-2xl mb-6">
@@ -176,7 +176,22 @@
                         <li><i class="fa-solid fa-check text-brandCyan mr-2"></i> Factures automatiques</li>
                     </ul>
                 </div>
-                <div class="tech-card bg-brandBlue/50 border border-brandBlue/60 p-8 rounded-2xl flex flex-col justify-between hover:border-brandCyan/40 transition-all duration-300" data-category="app windows">
+                <div class="tech-card bg-brandBlue/50 border border-brandBlue/60 p-8 rounded-2xl flex flex-col justify-between hover:border-brandCyan/40 transition-all duration-300" data-category="app">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="font-poppins font-bold text-xl text-white mb-3">Apps Android &amp; iOS</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                            Applications mobiles natives et cross-platform performantes. Présence digitale totale sur Google Play et App Store.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><i class="fa-solid fa-check text-brandCyan mr-2"></i> iOS & Android (Flutter / React Native)</li>
+                        <li><i class="fa-solid fa-check text-brandCyan mr-2"></i> Push notifications & offline mode</li>
+                    </ul>
+                </div>
+                <div class="tech-card bg-brandBlue/50 border border-brandBlue/60 p-8 rounded-2xl flex flex-col justify-between hover:border-brandCyan/40 transition-all duration-300" data-category="windows">
                     <div>
                         <div class="w-14 h-14 rounded-xl bg-brandOrange/10 text-brandOrange flex items-center justify-center text-2xl mb-6">
                             <i class="fa-brands fa-windows"></i>
@@ -293,7 +308,7 @@
                 <div class="lg:col-span-7 bg-brandBlue/30 p-8 rounded-3xl border border-brandBlue/50">
                     <form id="calculatorForm" class="space-y-8">
                         <div>
-                            <h3 class="font-poppins font-bold text-lg text-white mb-4">1. Solutions Web & Logiciels</h3>
+                            <h3 class="font-poppins font-bold text-lg text-white mb-4">1. Sites Web, Apps Mobiles & Logiciels</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <label class="relative flex flex-col p-4 bg-brandDark border border-slate-800 rounded-xl cursor-pointer hover:border-brandCyan/50 transition-all select-none">
                                     <input type="checkbox" name="web_type" value="site_vitrine" class="absolute top-4 right-4 rounded text-brandCyan focus:ring-brandCyan">
@@ -304,6 +319,11 @@
                                     <input type="checkbox" name="web_type" value="site_ecommerce" class="absolute top-4 right-4 rounded text-brandCyan focus:ring-brandCyan">
                                     <span class="font-bold text-sm text-white">Plateforme E-Commerce</span>
                                     <span class="text-xs text-slate-500 mt-1">Vente, gestion de stock & Mobile Money.</span>
+                                </label>
+                                <label class="relative flex flex-col p-4 bg-brandDark border border-slate-800 rounded-xl cursor-pointer hover:border-emerald-500/50 transition-all select-none">
+                                    <input type="checkbox" name="web_type" value="mobile_app" class="absolute top-4 right-4 rounded text-emerald-500 focus:ring-emerald-500">
+                                    <span class="font-bold text-sm text-white">Application Mobile (Android & iOS)</span>
+                                    <span class="text-xs text-slate-500 mt-1">iOS & Android natives, push notifications.</span>
                                 </label>
                                 <label class="relative flex flex-col p-4 bg-brandDark border border-slate-800 rounded-xl cursor-pointer hover:border-brandCyan/50 transition-all select-none sm:col-span-2">
                                     <input type="checkbox" name="web_type" value="windows_app" class="absolute top-4 right-4 rounded text-brandCyan focus:ring-brandCyan">

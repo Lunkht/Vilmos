@@ -94,6 +94,7 @@ const approxEur = document.getElementById('approx_eur');
 const PRICES = {
     site_vitrine: 3500000,    // ~375 EUR in GNF
     site_ecommerce: 8000000,  // ~860 EUR in GNF
+    mobile_app: 6000000,     // ~645 EUR in GNF
     windows_app: 12000000,   // ~1300 EUR in GNF
     camera_base: 1500000,     // Prix par caméra avec installation incluse
     solar_add: 900000,        // Supplément kit solaire par unité de caméra
@@ -122,6 +123,10 @@ function recalculateEstimator() {
     if (selectedWebTypes.includes('site_ecommerce')) {
         finalPriceGNF += PRICES.site_ecommerce;
         receiptHtml += `<div class="flex justify-between text-xs"><span>E-Commerce Complet :</span><span class="font-mono text-brandCyan">8 000 000 GNF</span></div>`;
+    }
+    if (selectedWebTypes.includes('mobile_app')) {
+        finalPriceGNF += PRICES.mobile_app;
+        receiptHtml += `<div class="flex justify-between text-xs"><span>App Mobile Android & iOS :</span><span class="font-mono text-emerald-500">6 000 000 GNF</span></div>`;
     }
     if (selectedWebTypes.includes('windows_app')) {
         finalPriceGNF += PRICES.windows_app;
